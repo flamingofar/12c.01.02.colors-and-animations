@@ -24,6 +24,30 @@ function start() {
 		toggleLightMode(lightModeState);
 		setLightModeLocalStorage(lightModeState);
 	});
+
+	// Button Animation
+	const btns = document.querySelectorAll(".custom_button");
+
+	btns.forEach((btn) => {
+		const bubble = btn.querySelector(".button_bubble");
+		console.log(bubble);
+
+		btn.addEventListener("click", (e) => {
+			console.log(e.offsetX);
+			const x = e.offsetX;
+			const y = e.offsetY;
+			bubble.style.visibility = "visible";
+			bubble.style.top = `${y}px`;
+			bubble.style.left = `${x}px`;
+
+			const bubble_kf = [
+				{ transform: `scale(1)`, opacity: 1 },
+				{ transform: `scale(100)`, opacity: 0 },
+			];
+			const bubble_props = { duration: 500, iteration: 1, fill: "forwards" };
+			const bubble_ani = bubble.animate(bubble_kf, bubble_props);
+		});
+	});
 }
 function toggleLightMode(state) {
 	document.documentElement.classList.toggle("light-mode", state);

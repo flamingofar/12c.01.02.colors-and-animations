@@ -15,6 +15,7 @@
 	--secondary-2: #01dfc5;
 	--accent-1: #eeaace;
 	--accent-2: #cd79a6;
+	--bubble: #04a895;
 
 	/* FONTS */
 	--heading: "Century Gothic", sans-serif;
@@ -127,17 +128,35 @@ a:hover {
 }
 
 /* UI Elements */
-button {
-	display: inline-block;
-	height: 3rem;
-	padding: 1rem 2rem;
+button,
+.button {
+	position: relative;
+	padding: 0.5rem 1rem;
 	border: none;
 	font-size: 1rem;
-	line-height: 1rem;
 	text-align: center;
 	text-decoration: none;
 	background-color: var(--secondary-2);
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.button_bubble {
+	visibility: hidden;
+	pointer-events: none;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border-radius: 999px;
+	background: var(--bubble);
+	transform: translate(-50%, -50%);
+}
+
+.button p {
+	position: relative;
+	pointer-events: none;
 	color: var(--secondary);
+	margin: 0;
 }
 
 .dark_button {
@@ -313,7 +332,7 @@ header button {
 	background-color: var(--secondary-2);
 }
 
-#request div {
+#request > div {
 	width: 50vw;
 	min-width: 450px;
 }
@@ -330,12 +349,14 @@ header button {
 	border: none;
 	background: var(--primary);
 }
+.input_request {
+	display: flex;
+}
 
 /* Footer */
 footer {
 	display: flex;
 	padding: 5vh 2rem;
-	align-items: top;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	background-color: var(--primary);
@@ -354,7 +375,6 @@ footer a {
 footer section.left {
 	display: flex;
 	max-width: 50vw;
-	align-items: top;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
